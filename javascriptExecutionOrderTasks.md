@@ -1,5 +1,4 @@
-'
-'''
+```
 Q1 [1, 2, 3, 4 + 5].length;
 
 1
@@ -81,5 +80,4 @@ Q4 { hello: "wor" + "ld" }
 { hello: "wor" + "ld" }
 // => {hello: "world"}
 
-'''
-'
+```
