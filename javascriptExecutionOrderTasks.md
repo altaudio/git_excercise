@@ -77,7 +77,11 @@ Q4 { hello: "wor" + "ld" }
 "ld"
 // => ld
 
-{ hello: "wor" + "ld" }
+"wor" + "ld"
+// => "world"
+
+
+{ hello: "world" }
 // => {hello: "world"}
 
 ```
