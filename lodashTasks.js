@@ -65,3 +65,32 @@ console.log("The under fifties in the Gill family are " + under50s);
 //TO FINISH
 
 //Q10 Drop age of family member over 26 
+_.map(gillFamily, function (value) {
+	if (value.age > 26) {
+		delete value.age;
+	}
+})
+console.log("Ages Hidden: ");
+console.log(gillFamily[0], gillFamily[1], gillFamily[2], gillFamily[3], gillFamily[4]);
+
+//Re-declare Gill family as has been modified
+var gillFamily = [{name: 'john', age: 20}, {name: 'richard', age: 27}, {name: 'debbie', age: 55}, {name: 'dan', age: 25}, {name: 'robin', age: 60}];
+
+//Q11 Sort family members by age
+console.log("Sorted by age: ");
+var ageSorted = _.sortBy(gillFamily, ['age']);
+console.log(ageSorted[0], ageSorted[1], ageSorted[2], ageSorted[3], ageSorted[4]);
+
+//Q12 Find the Gill family members who's names start with D
+var dNames = [];
+
+_.map(gillFamily, function(value){
+	if (value.name.charAt(0) == 'd') {
+		dNames.push(value.name);
+	}
+});
+
+console.log("Family names beginning with d:");
+console.log(dNames);
+
+//Q13 Group the family members whose names start with different letters ()
