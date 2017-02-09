@@ -64,4 +64,4 @@ console.log("The under fifties in the Gill family are " + under50s);
 //Q9 Generate a HTML table with name and age headings
 //TO FINISH
 
-//Q10 Drop age of family member over 26
+//Q10 Drop age of family member over 26 
