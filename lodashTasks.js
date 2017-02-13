@@ -13,7 +13,7 @@ console.log("First Names: " + firstNames);
 //Q2- Write the code to produce an array of the names of the gill family including surnames
 //Map firstNames array with add gill function
 var firstAndLastNames = _.map(gillFamily, function(value){
-	return " " + value.name + "gill";
+	return value.name + "gill";
 
 });
 console.log("First and last names: " + firstAndLastNames);
@@ -57,17 +57,20 @@ under50s = _.filter(gillFamily, function(user) {
 console.log("The under fifties in the Gill family are " + under50s[0].name + " gill, " + under50s[1].name + " gill, " + under50s[2].name + " gill.");
 
 //Q9 Generate a HTML table with name and age headings
-//TO FINISH
+
 
 //Q10 Drop age of family member over 26 
-_.map(gillFamily, function (value, index, collection) {
+var ageOmit = _.map(gillFamily, function(value, index) {
 	if (value.age > 26) {
-		value.age = 0;
+		return _.omit(value, ['age']);
+	} else {
+		return value;
 	}
+
 });
 
-console.log("Ages Hidden: ");
-console.log(gillFamily[0], gillFamily[1], gillFamily[2], gillFamily[3], gillFamily[4]);
+console.log("Age Ommitted: ");
+console.log(ageOmit[0], ageOmit[1], ageOmit[2], ageOmit[3], ageOmit[4]);
 
 //Re-declare Gill family as has been modified
 var gillFamily = [{name: 'john', age: 20}, {name: 'richard', age: 27}, {name: 'debbie', age: 55}, {name: 'dan', age: 25}, {name: 'robin', age: 60}];
@@ -81,9 +84,44 @@ console.log(ageSorted[0], ageSorted[1], ageSorted[2], ageSorted[3], ageSorted[4]
 var dNames = [];
 
 dNames = _.filter(gillFamily, function(value) {
-	return value.name.charAt(0) == "d";
+	name = value.name;
+	return name.charAt(0) == "d";
 });
 console.log("Family names beginning with d:");
 console.log(dNames[0], dNames[1]);
 
 //Q13 Group the family members whose names start with different letters ()
+
+
+
+//Q14 Return the youngest member of the Gill family.
+ var ageSorted = _.sortBy(gillFamily, ['age']);
+ console.log("Youngest member of the Gill family: ");
+ console.log(ageSorted[0]);
+
+//Q15 Return the members of the Gill family who have an 'a' in their name.
+var aNames;
+aNames = _.filter(gillFamily, function(value) {
+	return _.includes(value.name, "a");
+});
+
+console.log("Names with \"a\" in:");
+console.log(aNames[0], aNames[1]);
+
+//Q16 Return the members of the Gill family but with the first letter of their name capitalized.
+var capital = _.map(gillFamily, function(value) {
+	return _.capitalize(value.name);
+});
+
+console.log("The Gill family capitalized:");
+console.log(capital);
+
+//Q17 Find the youngest member of the Gill family with an 'a' in their name. 
+var aNames;
+aNames = _.filter(gillFamily, function(value) {
+	return _.includes(value.name, "a");
+});
+
+aNameYoung = _.sortBy(aNames, ['age']);
+console.log("The youngest member of the Gill family whose name includes \"a\" is: ");
+console.log(aNameYoung[0]);
