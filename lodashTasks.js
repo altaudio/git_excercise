@@ -4,7 +4,6 @@
 var gillFamily = [{name: 'john', age: 20}, {name: 'richard', age: 27}, {name: 'debbie', age: 55}, {name: 'dan', age: 25}, {name: 'robin', age: 60}];
 
 
-
 //Q1- Write the code to produce an array of the names of the gill family. e.g ['john', 'daniel' ... etc.]
 //Map each name of the Gill family
 var firstNames = _.map(gillFamily, 'name');
@@ -57,16 +56,16 @@ under50s = _.filter(gillFamily, function(user) {
 console.log("The under fifties in the Gill family are " + under50s[0].name + " gill, " + under50s[1].name + " gill, " + under50s[2].name + " gill.");
 
 //Q9 Generate a HTML table with name and age headings. Double space for readability
-var htmlTable = "<table>\n  <tr>\n    <thead>Name</thead>\n    <thead>Age</thead>\n  </tr>\n\n";
+var htmlTable = "<table border=\"1\" cellpadding=\"5\" cellspacing=\"5\">\n  <thead>\n    <tr>\n      <th>Name</th>\n      <th>Age</th>\n    </tr>\n  </thead>\n  <tbody>\n\n";
 
 _.map(gillFamily, function(value) {
-	htmlTable += "  <tr>\n";
-	htmlTable += "    <td>" + value.name + "</td>\n";
-	htmlTable += "    <td>" + value.age + "</td>\n";
-	htmlTable += "  </tr>\n\n";
+	htmlTable += "    <tr>\n";
+	htmlTable += "      <td>" + value.name + "</td>\n";
+	htmlTable += "      <td>" + value.age + "</td>\n";
+	htmlTable += "    </tr>\n\n";
 })
 
-htmlTable += "</table>";
+htmlTable += "  <tbody>\n</table>";
 
 console.log("HTML table:");
 console.log(htmlTable);
@@ -93,8 +92,7 @@ console.log(JSON.stringify(ageSorted));
 var dNames = [];
 
 dNames = _.filter(gillFamily, function(value) {
-	name = value.name;
-	return name.charAt(0) == "d";
+	return value.name.startsWith("d");
 });
 console.log("Family names beginning with d:");
 console.log(JSON.stringify(dNames));
@@ -102,7 +100,7 @@ console.log(JSON.stringify(dNames));
 //Q13 Group the family members whose names start with different letters ()
 
 var groupedFamily = _.groupBy(gillFamily, function (value) {
-	return value.name.charAt(0);
+	return value.name[0];
 });
 
 console.log("Names grouped by first letter of name: ");
