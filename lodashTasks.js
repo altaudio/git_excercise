@@ -13,7 +13,7 @@ console.log("First Names: " + firstNames);
 //Q2- Write the code to produce an array of the names of the gill family including surnames
 //Map firstNames array with add gill function
 var firstAndLastNames = _.map(gillFamily, function(value){
-	return " " + value.name + " gill";
+	return " " + value.name + "gill";
 
 });
 console.log("First and last names: " + firstAndLastNames);
@@ -32,12 +32,11 @@ console.log("The mean age of the Gill family is " + meanAge);
 //Q5 Family members under 50.
 
 var under50s = [];
-_.map(gillFamily, function (value) {
-	if (value.age < 50) {
-		under50s.push(value.name);
-	}
+under50s = _.filter(gillFamily, function(user) {
+	return user.age < 50;
 });
-console.log("The under fifties in the Gill family are " + under50s);
+console.log("The under fifties in the Gill family are:");
+console.log(under50s[0],under50s[1],under50s[2]);
 
 //Q6 Number of members in the Gill family
 console.log("There are " + _.size(gillFamily) + " people in the Gill family!");
@@ -45,31 +44,28 @@ console.log("There are " + _.size(gillFamily) + " people in the Gill family!");
 //Q7 
 
 var under50s = [];
-_.map(gillFamily, function (value) {
-	if (value.age < 50) {
-		under50s.push(value.name);
-	}
+under50s = _.filter(gillFamily, function(user) {
+	return user.age < 50;
 });
 console.log(_.size(under50s) + " members of the Gill family are under 50.");
 
-//Q8 list the members of the family under 50
+//Q8 list the members of the family under 50 with surnames
 var under50s = [];
-_.map(gillFamily, function (value) {
-	if (value.age < 50) {
-		under50s.push(" " + value.name + " gill");
-	}
+under50s = _.filter(gillFamily, function(user) {
+	return user.age < 50;
 });
-console.log("The under fifties in the Gill family are " + under50s);
+console.log("The under fifties in the Gill family are " + under50s[0].name + " gill, " + under50s[1].name + " gill, " + under50s[2].name + " gill.");
 
 //Q9 Generate a HTML table with name and age headings
 //TO FINISH
 
 //Q10 Drop age of family member over 26 
-_.map(gillFamily, function (value) {
+_.map(gillFamily, function (value, index, collection) {
 	if (value.age > 26) {
-		delete value.age;
+		value.age = 0;
 	}
-})
+});
+
 console.log("Ages Hidden: ");
 console.log(gillFamily[0], gillFamily[1], gillFamily[2], gillFamily[3], gillFamily[4]);
 
@@ -84,13 +80,10 @@ console.log(ageSorted[0], ageSorted[1], ageSorted[2], ageSorted[3], ageSorted[4]
 //Q12 Find the Gill family members who's names start with D
 var dNames = [];
 
-_.map(gillFamily, function(value){
-	if (value.name.charAt(0) == 'd') {
-		dNames.push(value.name);
-	}
+dNames = _.filter(gillFamily, function(value) {
+	return value.name.charAt(0) == "d";
 });
-
 console.log("Family names beginning with d:");
-console.log(dNames);
+console.log(dNames[0], dNames[1]);
 
 //Q13 Group the family members whose names start with different letters ()
