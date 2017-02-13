@@ -36,7 +36,7 @@ under50s = _.filter(gillFamily, function(user) {
 	return user.age < 50;
 });
 console.log("The under fifties in the Gill family are:");
-console.log(under50s[0],under50s[1],under50s[2]);
+console.log(JSON.stringify(under50s));
 
 //Q6 Number of members in the Gill family
 console.log("There are " + _.size(gillFamily) + " people in the Gill family!");
@@ -56,13 +56,25 @@ under50s = _.filter(gillFamily, function(user) {
 });
 console.log("The under fifties in the Gill family are " + under50s[0].name + " gill, " + under50s[1].name + " gill, " + under50s[2].name + " gill.");
 
-//Q9 Generate a HTML table with name and age headings
+//Q9 Generate a HTML table with name and age headings. Double space for readability
+var htmlTable = "<table>\n  <tr>\n    <thead>Name</thead>\n    <thead>Age</thead>\n  </tr>\n\n";
 
+_.map(gillFamily, function(value) {
+	htmlTable += "  <tr>\n";
+	htmlTable += "    <td>" + value.name + "</td>\n";
+	htmlTable += "    <td>" + value.age + "</td>\n";
+	htmlTable += "  </tr>\n\n";
+})
+
+htmlTable += "</table>";
+
+console.log("HTML table:");
+console.log(htmlTable);
 
 //Q10 Drop age of family member over 26 
 var ageOmit = _.map(gillFamily, function(value, index) {
 	if (value.age > 26) {
-		return _.omit(value, ['age']);
+		return _.omit(value, 'age');
 	} else {
 		return value;
 	}
@@ -70,15 +82,12 @@ var ageOmit = _.map(gillFamily, function(value, index) {
 });
 
 console.log("Age Ommitted: ");
-console.log(ageOmit[0], ageOmit[1], ageOmit[2], ageOmit[3], ageOmit[4]);
-
-//Re-declare Gill family as has been modified
-var gillFamily = [{name: 'john', age: 20}, {name: 'richard', age: 27}, {name: 'debbie', age: 55}, {name: 'dan', age: 25}, {name: 'robin', age: 60}];
+console.log(JSON.stringify(ageOmit));
 
 //Q11 Sort family members by age
 console.log("Sorted by age: ");
 var ageSorted = _.sortBy(gillFamily, ['age']);
-console.log(ageSorted[0], ageSorted[1], ageSorted[2], ageSorted[3], ageSorted[4]);
+console.log(JSON.stringify(ageSorted));
 
 //Q12 Find the Gill family members who's names start with D
 var dNames = [];
@@ -88,11 +97,16 @@ dNames = _.filter(gillFamily, function(value) {
 	return name.charAt(0) == "d";
 });
 console.log("Family names beginning with d:");
-console.log(dNames[0], dNames[1]);
+console.log(JSON.stringify(dNames));
 
 //Q13 Group the family members whose names start with different letters ()
 
+var groupedFamily = _.groupBy(gillFamily, function (value) {
+	return value.name.charAt(0);
+});
 
+console.log("Names grouped by first letter of name: ");
+console.log(JSON.stringify(groupedFamily));
 
 //Q14 Return the youngest member of the Gill family.
  var ageSorted = _.sortBy(gillFamily, ['age']);
@@ -106,7 +120,7 @@ aNames = _.filter(gillFamily, function(value) {
 });
 
 console.log("Names with \"a\" in:");
-console.log(aNames[0], aNames[1]);
+console.log(JSON.stringify(aNames));
 
 //Q16 Return the members of the Gill family but with the first letter of their name capitalized.
 var capital = _.map(gillFamily, function(value) {
