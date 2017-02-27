@@ -1,3 +1,4 @@
+```
 //Q1
 "Hello" is of the type string
 
@@ -23,3 +24,4 @@ The lodash _.map function accepts a collection (array or object) as its first ar
 
 //Q7
 The lodash _.filter fucntion accepts a collection (array or object) as its first argument and a predicate function, array or object as a second argument. Each item in the collection is tested to see if it returns truthy for the second arguement, and returns an array of these truthy values.
+```
